@@ -65,23 +65,23 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a software engineer specializing in building (and occasionally designing) exceptional
-        digital experiences. Currently, I’m focused on building accessible, human-centered products
-        at{' '}
-        <a href="https://upstatement.com/" target="_blank" rel="noreferrer">
-          Upstatement
+        I commit to bringing design & product's vision to life, through scalable & performant code,
+        following UI/UX best practices. Above all, I seek out work that brings real value to people
+        like in my recent experience with{' '}
+        <a href="https://www.swiftly.com/" target="_blank" rel="noreferrer">
+          Swiftly
         </a>
-        .
+        , improving shopping experience for milliions of users.
       </p>
     </>
   );
   const five = (
     <a
       className="email-link"
-      href="https://www.newline.co/courses/build-a-spotify-connected-app"
+      href="https://hashnode.com/@markmarcel"
       target="_blank"
       rel="noreferrer">
-      Check out my course!
+      Read blog
     </a>
   );
 
