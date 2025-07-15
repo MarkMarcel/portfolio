@@ -146,7 +146,7 @@ const About = () => {
               technology offered a more direct and scalable way to make a difference. Since then, I
               have followed a simple idea: make the most of my potential and use it to solve
               meaningful problems. My journey began with building tools to improve school operations
-              at <a href="https://www.idscorpgh.com/">Infoview</a>, .
+              at <a href="https://www.idscorpgh.com/">Infoview</a>.
             </p>
 
             <p>
@@ -154,8 +154,8 @@ const About = () => {
               <a href="#companies">companies</a>, contributing to products that deliver real value
               to users. I enjoy problem solving and exploration, and software engineering gives me
               space to apply those skills in a practical and creative way. Outside of work, I take
-              part in communities that are focused on advancing technology in Ghana as well as those
-              that offer a space for personal and professional growth.
+              part in communities that are focused on advancing technology such as{' '}
+              <a href="https://ghananlp.org/">Ghana NLP</a>.
             </p>
             <p>
               I moved to Germany in 2025 and am currently looking for a role where I can continue to
