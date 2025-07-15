@@ -7,20 +7,8 @@ module.exports = {
       url: 'https://github.com/markmarcel',
     },
     {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
-    },
-    {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
+      url: 'https://www.linkedin.com/in/mark-m-b0b836162',
     },
   ],
 
@@ -30,8 +18,8 @@ module.exports = {
       url: '/#about',
     },
     {
-      name: 'Experience',
-      url: '/#jobs',
+      name: 'Skills',
+      url: '/#skills',
     },
     {
       name: 'Work',
@@ -44,7 +32,7 @@ module.exports = {
   ],
 
   colors: {
-    green: '#64ffda',
+    green: '#19b67a',
     navy: '#0a192f',
     darkNavy: '#020c1b',
   },

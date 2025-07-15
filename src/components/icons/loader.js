@@ -16,7 +16,7 @@ const IconLoader = () => (
           v-50
           a20,20 0 0 1 20,-20
           z"
-        fill="#0A1643"
+        fill="#495670"
       />
       <g id="B">
         <path d="M0,70 L30,100 L30,70 Z" fill="#19B67A" />
