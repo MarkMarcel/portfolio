@@ -6,7 +6,6 @@ module.exports = {
     description: 'Building beautiful UI & delightful UX on Android & iOS.',
     siteUrl: 'https://markmarcel.dev', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@bchiang7',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

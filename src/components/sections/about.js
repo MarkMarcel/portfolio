@@ -125,7 +125,11 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const companies = [
+    { company: 'Swiftly Inc.', url: 'https://www.swiftly.com' },
+    { company: 'MHP - A Porsche Company', url: 'https://www.mhp.com/' },
+    { company: 'IMS GmbH', url: 'https://www.imsberlin.de/' },
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,37 +139,41 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Hello! I'm Mark, a software engineer from Ghana with a strong belief in the power of
+              technology to drive progress. At about 10, I had a childhood dream to contribute to
+              the development of my country. That interest led me to consider economics, so I chose
+              to study Economics, Mathematics and Computer Science. Over time, I realised that
+              technology offered a more direct and scalable way to make a difference. Since then, I
+              have followed a simple idea: make the most of my potential and use it to solve
+              meaningful problems. My journey began with building tools to improve school operations
+              at <a href="https://www.idscorpgh.com/">Infoview</a>, .
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
+              Fast-forward to today, and I’ve had the opportunity to work with a range of{' '}
+              <a href="#companies">companies</a>, contributing to products that deliver real value
+              to users. I enjoy problem solving and exploration, and software engineering gives me
+              space to apply those skills in a practical and creative way. Outside of work, I take
+              part in communities that are focused on advancing technology in Ghana as well as those
+              that offer a space for personal and professional growth.
             </p>
-
             <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
+              I moved to Germany in 2025 and am currently looking for a role where I can continue to
+              grow, contribute to meaningful projects and learn from those around me. In my free
+              time, I enjoy discovering new ideas, tools and ways of thinking, exploring outdoors
+              and playing video games.
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p id="companies">Here are a few companies I’ve been working with recently:</p>
           </div>
 
           <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+            {companies &&
+              companies.map((company, i) => (
+                <li key={i}>
+                  <a href={company.url}>{company.company}</a>
+                </li>
+              ))}
           </ul>
         </StyledText>
 
@@ -173,11 +181,11 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg"
+              src="../../images/me1.jpeg"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
+              alt="Mark Marcel"
             />
           </div>
         </StyledPic>
