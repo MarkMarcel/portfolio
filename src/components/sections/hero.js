@@ -77,11 +77,7 @@ const Hero = () => {
         <FormattedMessage
           id="heroSummaryTxt"
           values={{
-            a: chunks => (
-              <a href="https://www.swiftly.com/" target="_blank" rel="noopener noreferrer">
-                {chunks}
-              </a>
-            ),
+            a: chunks => <a href="https://www.swiftly.com/">{chunks}</a>,
           }}
         />
       </p>

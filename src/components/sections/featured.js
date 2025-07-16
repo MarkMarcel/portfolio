@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { FormattedMessage } from 'react-intl';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -348,7 +349,7 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        <FormattedMessage id="projectsSectionTitle" />
       </h2>
 
       <StyledProjectsGrid>
@@ -362,7 +363,9 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">
+                      <FormattedMessage id="featuredProjectCaption" />
+                    </p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
