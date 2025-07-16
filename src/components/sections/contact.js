@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { srConfig, email } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import { FormattedMessage } from 'react-intl';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
@@ -55,17 +56,20 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
+      <h2 className="numbered-heading overline">
+        <FormattedMessage id="contactCaption" />
+      </h2>
 
-      <h2 className="title">Get In Touch</h2>
+      <h2 className="title">
+        <FormattedMessage id="contactSectionTitle" />
+      </h2>
 
       <p>
-        I’m currently looking for new opportunities, my inbox is open. Whether you have a question
-        or just want to say hi, I’ll get back to you!
+        <FormattedMessage id="contactMessageTxt" />
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
+        <FormattedMessage id="contactCtaBtn" />
       </a>
     </StyledContactSection>
   );

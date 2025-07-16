@@ -27,6 +27,19 @@ module.exports = {
         icon: 'src/images/logo.png',
       },
     },
+    {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `en`,
+        configPath: require.resolve(`./i18n/config.json`),
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n-react-intl`,
+      options: {
+        defaultLocale: `./i18n/react-intl/en.json`,
+      },
+    },
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
