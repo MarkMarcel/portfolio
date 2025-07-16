@@ -5,7 +5,13 @@ module.exports = {
     title: 'Mark Marcel',
     description: 'Building beautiful UI & delightful UX on Android & iOS.',
     siteUrl: 'https://markmarcel.dev', // No trailing slash allowed!
-    image: '/og.png', // Path to your image you placed in the 'static' folder
+    image: '/og.png',
+    ogLocalization: {
+      de: {
+        description: 'Ich entwickele ansprechende UI & überzeugende UX für Android & iOS.',
+        image: '/images/og-de.png',
+      },
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
