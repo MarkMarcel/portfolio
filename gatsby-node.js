@@ -66,6 +66,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === 'MarkdownRemark') {
+    const parent = getNode(node.parent);
+    const filePath = parent.relativePath;
+
+    // Match locale from filename like index.de.md
+    const match = filePath.match(/\.([a-z]{2})\.md$/);
+    const locale = match ? match[1] : 'en'; // Default to 'en'
+
+    createNodeField({
+      node,
+      name: 'locale',
+      value: locale,
+    });
+  }
+};
+
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules

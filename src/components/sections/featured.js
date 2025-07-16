@@ -6,7 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -305,14 +305,19 @@ const StyledProject = styled.li`
 `;
 
 const Featured = () => {
+  const { locale } = useIntl();
+
   const data = useStaticQuery(graphql`
-    {
-      featured: allMarkdownRemark(
+    query {
+      allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/featured/" } }
         sort: { fields: [frontmatter___date], order: ASC }
       ) {
         edges {
           node {
+            fields {
+              locale
+            }
             frontmatter {
               title
               cover {
@@ -332,7 +337,10 @@ const Featured = () => {
     }
   `);
 
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+  const featuredProjects = data.allMarkdownRemark.edges.filter(
+    edge => edge.node.fields.locale === locale,
+  );
+
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -387,7 +395,7 @@ const Featured = () => {
                     <div className="project-links">
                       {cta && (
                         <a href={cta} aria-label="Video link" className="cta">
-                          Watch
+                          <FormattedMessage id="projectsWatchBtn" />
                         </a>
                       )}
                       {github && (
