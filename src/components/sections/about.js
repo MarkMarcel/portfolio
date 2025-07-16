@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import { FormattedMessage } from 'react-intl';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -133,45 +134,57 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">About Me</h2>
+      <h2 className="numbered-heading">
+        <FormattedMessage id="aboutSectionTitle" />
+      </h2>
 
       <div className="inner">
         <StyledText>
           <div>
             <p>
-              Hello! I'm Mark, a software engineer from Ghana with a strong belief in the power of
-              technology to drive progress. At about 10, I had a childhood dream to contribute to
-              the development of my country. That interest led me to consider economics, so I chose
-              to study Economics, Mathematics and Computer Science. Over time, I realised that
-              technology offered a more direct and scalable way to make a difference. Since then, I
-              have followed a simple idea: make the most of my potential and use it to solve
-              meaningful problems. My journey began with building tools to improve school operations
-              at <a href="https://www.idscorpgh.com/">Infoview</a>.
+              <FormattedMessage
+                id="about1"
+                values={{
+                  a: chunks => <a href="https://www.idscorpgh.com/">{chunks}</a>,
+                }}
+              />
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the opportunity to work with a range of{' '}
-              <a href="#companies">companies</a>, contributing to products that deliver real value
-              to users. I enjoy problem solving and exploration, and software engineering gives me
-              space to apply those skills in a practical and creative way. Outside of work, I take
-              part in communities that are focused on advancing technology such as{' '}
-              <a href="https://ghananlp.org/">Ghana NLP</a>.
+              <FormattedMessage
+                id="about2"
+                values={{
+                  link: chunks => (
+                    <a
+                      href="#companies"
+                      onClick={e => {
+                        e.preventDefault();
+                        document
+                          .querySelector('#companies')
+                          ?.scrollIntoView({ behavior: 'smooth' });
+                      }}>
+                      {chunks}
+                    </a>
+                  ),
+                  a: chunks => <a href="https://ghananlp.org/">{chunks}</a>,
+                }}
+              />
             </p>
             <p>
-              I moved to Germany in 2025 and am currently looking for a role where I can continue to
-              grow, contribute to meaningful projects and learn from those around me. In my free
-              time, I enjoy discovering new ideas, tools and ways of thinking, exploring outdoors
-              and playing video games.
+              <FormattedMessage id="about3" />
             </p>
-
-            <p id="companies">Here are a few companies I’ve been working with recently:</p>
+            <p id="companies">
+              <FormattedMessage id="about4" />
+            </p>
           </div>
 
           <ul className="skills-list">
             {companies &&
               companies.map((company, i) => (
                 <li key={i}>
-                  <a href={company.url}>{company.company}</a>
+                  <p>
+                    <a href={company.url}>{company.company}</a>
+                  </p>
                 </li>
               ))}
           </ul>

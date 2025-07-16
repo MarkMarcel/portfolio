@@ -8,6 +8,7 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
+import { FormattedMessage } from 'react-intl';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -211,7 +212,7 @@ const Nav = ({ isHome }) => {
       href="https://docs.google.com/document/d/14lRyxdWaHhoxUws9-mlJ1y_-gj5tjRon5qYOKqU9j9g/edit?usp=sharing"
       target="_blank"
       rel="noopener noreferrer">
-      Resume
+      <FormattedMessage id="headerResumeBtn" defaultMessage="" />
     </a>
   );
 
@@ -225,9 +226,11 @@ const Nav = ({ isHome }) => {
             <StyledLinks>
               <ol>
                 {navLinks &&
-                  navLinks.map(({ url, name }, i) => (
+                  navLinks.map(({ url, key }, i) => (
                     <li key={i}>
-                      <Link to={url}>{name}</Link>
+                      <Link to={url}>
+                        <FormattedMessage id={key} defaultMessage="" />
+                      </Link>
                     </li>
                   ))}
               </ol>
@@ -251,10 +254,12 @@ const Nav = ({ isHome }) => {
                 <TransitionGroup component={null}>
                   {isMounted &&
                     navLinks &&
-                    navLinks.map(({ url, name }, i) => (
+                    navLinks.map(({ url, key }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
+                          <Link to={url}>
+                            <FormattedMessage id={key} defaultMessage="" />
+                          </Link>
                         </li>
                       </CSSTransition>
                     ))}

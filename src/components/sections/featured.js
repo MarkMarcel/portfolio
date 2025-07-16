@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -304,14 +305,19 @@ const StyledProject = styled.li`
 `;
 
 const Featured = () => {
+  const { locale } = useIntl();
+
   const data = useStaticQuery(graphql`
-    {
-      featured: allMarkdownRemark(
+    query {
+      allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/featured/" } }
         sort: { fields: [frontmatter___date], order: ASC }
       ) {
         edges {
           node {
+            fields {
+              locale
+            }
             frontmatter {
               title
               cover {
@@ -331,7 +337,10 @@ const Featured = () => {
     }
   `);
 
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+  const featuredProjects = data.allMarkdownRemark.edges.filter(
+    edge => edge.node.fields.locale === locale,
+  );
+
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -348,7 +357,7 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        <FormattedMessage id="projectsSectionTitle" />
       </h2>
 
       <StyledProjectsGrid>
@@ -362,7 +371,9 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">
+                      <FormattedMessage id="featuredProjectCaption" />
+                    </p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
@@ -384,7 +395,7 @@ const Featured = () => {
                     <div className="project-links">
                       {cta && (
                         <a href={cta} aria-label="Video link" className="cta">
-                          Watch
+                          <FormattedMessage id="projectsWatchBtn" />
                         </a>
                       )}
                       {github && (

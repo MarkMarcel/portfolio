@@ -6,6 +6,7 @@ import { srConfig } from '@config';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import { FormattedMessage } from 'react-intl';
 
 const StyledSkillsSection = styled.section`
   max-width: 700px;
@@ -240,7 +241,9 @@ const Skills = () => {
 
   return (
     <StyledSkillsSection id="skills" ref={revealContainer}>
-      <h2 className="numbered-heading">What I Can Do</h2>
+      <h2 className="numbered-heading">
+        <FormattedMessage id="skillsSectionTitle" />
+      </h2>
 
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Skill tabs" onKeyDown={e => onKeyDown(e)}>
