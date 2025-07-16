@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import { useIntl } from 'react-intl';
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
 const Head = ({ title, description, image }) => {
   const { pathname } = useLocation();
+
+  const { locale } = useIntl(); // Get current locale
 
   const { site } = useStaticQuery(
     graphql`
@@ -18,18 +21,27 @@ const Head = ({ title, description, image }) => {
             defaultDescription: description
             siteUrl
             defaultImage: image
+            ogLocalization {
+              de {
+                description
+                image
+              }
+            }
           }
         }
       }
     `,
   );
 
-  const { defaultTitle, defaultDescription, siteUrl, defaultImage } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl, defaultImage, ogLocalization } =
+    site.siteMetadata;
+
+  const localizedMeta = ogLocalization?.[locale] || {};
 
   const seo = {
     title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    description: description || localizedMeta.description || defaultDescription,
+    image: `${siteUrl}${image || localizedMeta.image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
   };
 
@@ -45,6 +57,7 @@ const Head = ({ title, description, image }) => {
       <meta property="og:image" content={seo.image} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content={locale === 'de' ? 'de_DE' : 'en_US'} />
 
       <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
       {/* TODO:REPLACE */}
