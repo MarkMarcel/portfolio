@@ -14,19 +14,19 @@ module.exports = {
 
   navLinks: [
     {
-      name: 'About',
+      key: 'navAbout',
       url: '/#about',
     },
     {
-      name: 'Skills',
+      key: 'navSkills',
       url: '/#skills',
     },
     {
-      name: 'Work',
+      key: 'navProjects',
       url: '/#projects',
     },
     {
-      name: 'Contact',
+      key: 'navContact',
       url: '/#contact',
     },
   ],

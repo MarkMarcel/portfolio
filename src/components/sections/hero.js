@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
+import { FormattedMessage } from 'react-intl';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -59,19 +60,30 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hello, my name is</h1>;
+  const one = (
+    <h1>
+      <FormattedMessage id="heroIntroTxt" />
+    </h1>
+  );
   const two = <h2 className="big-heading">Mark Marcel.</h2>;
-  const three = <h3 className="big-heading">I build delightful experiences.</h3>;
+  const three = (
+    <h3 className="big-heading">
+      <FormattedMessage id="heroTaglineTxt" />
+    </h3>
+  );
   const four = (
     <>
       <p>
-        I commit to bringing design & product's vision to life, through scalable & performant code,
-        following UI/UX best practices. Above all, I seek out work that brings real value to people
-        like in my recent experience with{' '}
-        <a href="https://www.swiftly.com/" target="_blank" rel="noreferrer">
-          Swiftly
-        </a>
-        , improving shopping experience for milliions of users.
+        <FormattedMessage
+          id="heroSummaryTxt"
+          values={{
+            a: chunks => (
+              <a href="https://www.swiftly.com/" target="_blank" rel="noopener noreferrer">
+                {chunks}
+              </a>
+            ),
+          }}
+        />
       </p>
     </>
   );
@@ -81,7 +93,7 @@ const Hero = () => {
       href="https://hashnode.com/@markmarcel"
       target="_blank"
       rel="noreferrer">
-      Read blog
+      <FormattedMessage id="heroCtaBtn" />
     </a>
   );
 

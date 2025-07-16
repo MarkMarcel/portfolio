@@ -1,11 +1,11 @@
 {
-  "name": "v4",
-  "description": "Personal Website V4",
+  "name": "v1",
+  "description": "Personal Website V1",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Mark Marcel <marcelmarkamoako@yahoo.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/markmarcel/portfolio.git"
   },
   "keywords": [
     "gatsby"
@@ -48,6 +48,8 @@
     "gatsby-remark-images": "^5.1.0",
     "gatsby-remark-prismjs": "^5.1.0",
     "gatsby-source-filesystem": "^3.4.0",
+    "gatsby-theme-i18n": "^3.0.0",
+    "gatsby-theme-i18n-react-intl": "^3.0.0",
     "gatsby-transformer-remark": "^4.1.0",
     "gatsby-transformer-sharp": "^3.4.0",
     "lodash": "^4.17.19",
@@ -56,6 +58,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-intl": "^7.1.11",
     "react-transition-group": "^4.3.0",
     "scrollreveal": "^4.0.5",
     "styled-components": "^5.3.0"

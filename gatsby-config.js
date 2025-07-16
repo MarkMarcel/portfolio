@@ -50,6 +50,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `en`,
+        configPath: require.resolve(`./i18n/config.json`),
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n-react-intl`,
+      options: {
+        defaultLocale: `./i18n/react-intl/en.json`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
