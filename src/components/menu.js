@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const StyledMenu = styled.div`
   display: none;
@@ -157,7 +158,11 @@ const StyledSidebar = styled.aside`
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const { locale } = useIntl();
+  const resumeLinks = {
+    en: 'https://drive.google.com/file/d/1eJSBSmAdz4Q3CVPj1QhjKtYnbaC4qCmU/view?usp=sharing',
+    de: 'https://drive.google.com/file/d/15ENWqCEMfDN3l1kcF4S-EpftR5cPbfnw/view?usp=sharing',
+  };
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const buttonRef = useRef(null);
@@ -256,20 +261,18 @@ const Menu = () => {
           <nav ref={navRef}>
             {navLinks && (
               <ol>
-                {navLinks.map(({ url, name }, i) => (
+                {navLinks.map(({ url, key }, i) => (
                   <li key={i}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
-                      {name}
+                      <FormattedMessage id={key} defaultMessage="" />
                     </Link>
                   </li>
                 ))}
               </ol>
             )}
 
-            <a
-              href="https://docs.google.com/document/d/14lRyxdWaHhoxUws9-mlJ1y_-gj5tjRon5qYOKqU9j9g/edit?usp=sharing"
-              className="resume-link">
-              Resume
+            <a href={resumeLinks[locale] || resumeLinks.en} className="resume-link">
+              <FormattedMessage id="headerResumeBtn" defaultMessage="" />
             </a>
           </nav>
         </StyledSidebar>
