@@ -10,5 +10,3 @@ tech:
 company: 'Freelance'
 showInProjects: false
 ---
-
-hgh
