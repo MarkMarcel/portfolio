@@ -8,7 +8,7 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -152,10 +152,16 @@ const StyledLinks = styled.div`
 `;
 
 const Nav = ({ isHome }) => {
+  const { locale } = useIntl();
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const resumeLinks = {
+    en: 'https://drive.google.com/file/d/1eJSBSmAdz4Q3CVPj1QhjKtYnbaC4qCmU/view?usp=sharing',
+    de: 'https://drive.google.com/file/d/15ENWqCEMfDN3l1kcF4S-EpftR5cPbfnw/view?usp=sharing',
+  };
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50);
@@ -209,7 +215,7 @@ const Nav = ({ isHome }) => {
   const ResumeLink = (
     <a
       className="resume-button"
-      href="https://docs.google.com/document/d/14lRyxdWaHhoxUws9-mlJ1y_-gj5tjRon5qYOKqU9j9g/edit?usp=sharing"
+      href={resumeLinks[locale] || resumeLinks.en}
       target="_blank"
       rel="noopener noreferrer">
       <FormattedMessage id="headerResumeBtn" defaultMessage="" />
