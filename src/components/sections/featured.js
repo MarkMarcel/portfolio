@@ -7,6 +7,7 @@ import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { LocalisedLink } from '@components';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -14,6 +15,42 @@ const StyledProjectsGrid = styled.ul`
   a {
     position: relative;
     z-index: 1;
+  }
+`;
+
+const StyledProjectsSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: clamp(24px, 5vw, var(--fz-heading));
+  }
+
+  .archive-link {
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    &:after {
+      bottom: 0.1em;
+    }
+  }
+
+  .projects-grid {
+    ${({ theme }) => theme.mixins.resetList};
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+    position: relative;
+    margin-top: 50px;
+
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+
+  .more-button {
+    ${({ theme }) => theme.mixins.button};
+    margin: 80px auto 0;
   }
 `;
 
@@ -341,6 +378,7 @@ const Featured = () => {
     edge => edge.node.fields.locale === locale,
   );
 
+  const revealArchiveLink = useRef(null);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -350,6 +388,7 @@ const Featured = () => {
       return;
     }
 
+    sr.reveal(revealArchiveLink.current, srConfig());
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
@@ -421,6 +460,17 @@ const Featured = () => {
             );
           })}
       </StyledProjectsGrid>
+
+      <StyledProjectsSection>
+        <h2 ref={revealTitle}>
+          <FormattedMessage id="archiveSectionTitle1" />
+        </h2>
+        <p ref={revealArchiveLink}>
+          <LocalisedLink className="inline-link archive-link" to="/archive">
+            <FormattedMessage id="archiveViewBtn" />
+          </LocalisedLink>
+        </p>
+      </StyledProjectsSection>
     </section>
   );
 };
