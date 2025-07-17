@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
-import { Menu } from '@components';
+import { LocalisedLink, Menu } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -191,23 +190,23 @@ const Nav = ({ isHome }) => {
   const Logo = (
     <div className="logo" tabIndex="-1">
       {isHome ? (
-        <a href="/" aria-label="home">
+        <LocalisedLink to="/" aria-label="home">
           <div className="hex-container">
             <IconHex />
           </div>
           <div className="logo-container">
             <IconLogo />
           </div>
-        </a>
+        </LocalisedLink>
       ) : (
-        <Link to="/" aria-label="home">
+        <LocalisedLink to="/" aria-label="home">
           <div className="hex-container">
             <IconHex />
           </div>
           <div className="logo-container">
             <IconLogo />
           </div>
-        </Link>
+        </LocalisedLink>
       )}
     </div>
   );
@@ -234,9 +233,9 @@ const Nav = ({ isHome }) => {
                 {navLinks &&
                   navLinks.map(({ url, key }, i) => (
                     <li key={i}>
-                      <Link to={url}>
+                      <LocalisedLink to={url}>
                         <FormattedMessage id={key} defaultMessage="" />
-                      </Link>
+                      </LocalisedLink>
                     </li>
                   ))}
               </ol>
@@ -263,9 +262,9 @@ const Nav = ({ isHome }) => {
                     navLinks.map(({ url, key }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>
+                          <LocalisedLink to={url}>
                             <FormattedMessage id={key} defaultMessage="" />
-                          </Link>
+                          </LocalisedLink>
                         </li>
                       </CSSTransition>
                     ))}

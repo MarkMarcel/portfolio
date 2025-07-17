@@ -465,9 +465,11 @@ const Featured = () => {
         <h2 ref={revealTitle}>
           <FormattedMessage id="archiveSectionTitle1" />
         </h2>
-        <LocalisedLink className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-          <FormattedMessage id="archiveViewBtn" />
-        </LocalisedLink>
+        <p ref={revealArchiveLink}>
+          <LocalisedLink className="inline-link archive-link" to="/archive">
+            <FormattedMessage id="archiveViewBtn" />
+          </LocalisedLink>
+        </p>
       </StyledProjectsSection>
     </section>
   );
