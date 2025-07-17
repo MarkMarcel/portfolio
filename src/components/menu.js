@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { LocalisedLink } from '@components';
 
 const StyledMenu = styled.div`
   display: none;
@@ -263,9 +263,9 @@ const Menu = () => {
               <ol>
                 {navLinks.map(({ url, key }, i) => (
                   <li key={i}>
-                    <Link to={url} onClick={() => setMenuOpen(false)}>
+                    <LocalisedLink to={url} onClick={() => setMenuOpen(false)}>
                       <FormattedMessage id={key} defaultMessage="" />
-                    </Link>
+                    </LocalisedLink>
                   </li>
                 ))}
               </ol>
