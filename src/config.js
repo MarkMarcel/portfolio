@@ -26,6 +26,10 @@ module.exports = {
       url: '/#projects',
     },
     {
+      key: 'navCommunities',
+      url: '/#communities',
+    },
+    {
       key: 'navContact',
       url: '/#contact',
     },
